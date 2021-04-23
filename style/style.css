@@ -1,0 +1,104 @@
+@keyframes red-light{
+    0%{background-color: red;}
+    35%{background-color: gray;}
+    80%{background-color: red;}
+}
+@keyframes yellow-light{
+    20%{background-color: yellow;}
+    35%{background-color: gray;}
+}
+@keyframes green-light{
+    0%{background-color: gray;}
+    35%{background-color: green;}
+    56%{background-color: gray;}
+    60%{background-color: green;}
+    64%{background-color: gray;}
+    68%{background-color: green;}
+    72%{background-color: gray;}
+    76%{background-color: green;}
+    80%{background-color: gray;}
+}
+@keyframes bus-movement {
+    25%, 80%{transform: translateY(100%);}
+    100%{transform: translateY(-100%);}
+}
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+.container {
+    overflow: hidden;
+    position: relative;
+    height: 100vh;
+    background: linear-gradient(90deg, rgba(7,173,98,1) 30%, rgba(68,68,71,1) 30%, rgba(68,68,71,1) 49%, rgba(255,255,255,1) 49%, rgba(255,255,255,1) 51%, rgba(68,68,71,1) 51%, rgba(68,68,71,1) 70%, rgba(7,173,98,1) 70%);
+}
+.traffic-light {
+    background-color: black;
+    padding: 20px;
+    position: absolute;
+    top: 50%;
+    left: 75%;
+    transform: translateY(-50%);
+    border-radius: 20px;
+    z-index: 999;
+    transition: all 10s;
+}
+.traffic-light:active {
+    left: 15%;
+    transform: translateY(-25%);
+}
+.light {
+    background-color: gray;
+    margin: 20px auto;
+    padding: 60px;
+    border-radius: 50%;
+    position: relative;
+}
+.light > span {
+    position: absolute;
+    display: block;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 50px;
+}
+.light.-red {
+    animation: red-light 20s steps(1, end) .1s infinite normal;
+}
+.light.-yellow {
+    animation: yellow-light 20s steps(1, end) .1s infinite normal;
+}
+.light.-green {
+    animation: green-light 20s steps(1, end) .1s infinite normal;
+}
+.zebra-body {
+    width: 40%;
+    padding-top: 15%;
+    top: 25%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: linear-gradient(90deg, rgba(68,68,71,0) 10%, rgba(255,255,255,1) 10%, rgba(255,255,255,1) 20%, rgba(255,255,255,0) 20%, rgba(255,255,255,0) 30%, rgba(255,255,255,1) 30%, rgba(255,255,255,1) 40%, rgba(255,255,255,0) 40%, rgba(255,255,255,0) 60%, rgba(255,255,255,1) 60%, rgba(255,255,255,1) 70%, rgba(255,255,255,0) 70%, rgba(255,255,255,0) 80%, rgba(255,255,255,1) 80%, rgba(255,255,255,1) 90%, rgba(255,255,255,0) 90%);
+    position: relative;
+    transition: all .5s;
+}
+.zebra-body:hover {
+    opacity: 0;
+}
+.bus-body {
+    height: 400px;
+    width: 190px;
+    top: 0;
+    left: 53%;
+    position: absolute;
+    background-color: yellow;
+    transform: translateY(235%);
+    animation: bus-movement 20s ease-in-out 1s infinite normal;
+    border-radius: 10%;
+    transition: background-color 5s;
+}
+.bus-body:hover {
+    background-color: red;
+}
